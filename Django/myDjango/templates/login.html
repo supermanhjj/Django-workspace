@@ -1,0 +1,78 @@
+
+{#<p>继承了 base.html 文件</p>#}
+{#{%extends "base.html" %}#}
+{#{% block mainbody %}#}
+{##}
+{#    {% load static %}#}
+{#    <img src="{% static "images/weblogo.png" %}" alt="weblogo">{{views_name}}#}
+{#    <img src="{% static "images/weblogo.png" %}" alt="weblogo">#}
+{#    <h3>用户登录</h3>#}
+{#    反向解析#}
+{#    <form action="{% url 'login' %}" method="post">#}
+{#        <p>用户名: <input type="text" name="username"></p>#}
+{#        <p>密码: <input type="test" name="pwd"></p>#}
+{#        <input type="submit">#}
+{#    </form>#}
+{##}
+{#{% endblock %}#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color:#4ca4ff">
+
+<h3 style="font-family:arial;color:red;text-align:center">用户登录</h3>
+<form action="" method="post">
+    {% csrf_token %}
+    <p style="text-align:center;">用户名： <input type="text" name="username"></p>
+    <p style="text-align:center;">密  码： <input type="password" name="pwd"></p>
+    <input type="submit" name="b1" value="登 录">
+</form>
+
+<h3 style="text-align:center;">注册用户</h3>
+<form action="" method="post">
+    {% csrf_token %}
+    <p style="text-align:center;">用户名： <input type="text" name="register_username"></p>
+    <p style="text-align:center;">密  码： <input type="password" name="register_pwd"></p>
+    <input type="submit" name="b2" value="注 册"><p>{{ Register_resoult }}</p>
+</form>
+{#<div data-v-73748efc="" class="login_card_layout ivu-card ivu-card-bordered">#}
+{#    <!---->#}
+{#    <!---->#}
+{#    <div class="ivu-card-body">#}
+{#        <div data-v-73748efc="" class="login_div_layout">#}
+{#            <label data-v-73748efc="" class="login_title_style">账号登录</label>#}
+{#            <div data-v-73748efc="" class="loginInput ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text">#}
+{#                <!---->#}
+{#                <!---->#}
+{#                <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>#}
+{#                <input autocomplete="off" spellcheck="false" type="text" placeholder="请输入账号" class="ivu-input ivu-input-default ivu-input-with-prefix">#}
+{#                <span class="ivu-input-prefix">#}
+{#                    <i class="ivu-icon ivu-icon-ios-contact"></i>#}
+{#                </span>#}
+{#            </div>#}
+{#            <div data-v-73748efc="" class="loginInput ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-password">#}
+{#                <!---->#}
+{#                <!---->#}
+{#                <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>#}
+{#                <input autocomplete="off" spellcheck="false" type="password" placeholder="请输入密码" class="ivu-input ivu-input-default ivu-input-with-prefix">#}
+{#                <span class="ivu-input-prefix">#}
+{#                    <i class="ivu-icon ivu-icon-ios-lock"></i>#}
+{#                </span>#}
+{#            </div>#}
+{#            <button data-v-73748efc="" type="button" class="loginCss ivu-btn ivu-btn-primary">#}
+{#                <!---->#}
+{#                <!---->#}
+{#                <span>登 录</span>#}
+{#            </button>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+
+</body>
+</html>
+
+

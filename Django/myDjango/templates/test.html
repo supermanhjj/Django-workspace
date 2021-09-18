@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hjj Django</title>
+    <!引入bootstrap,这里要用static别名,而不是statics>
+    <link rel="stylesheet" href="/static/plugins/bootstrap-3.4.1/dist/css/bootstrap.css">
+</head>
+<body>
+{#    <h1>{{ hello }}</h1>#}
+
+    {% load static %}
+    {{views_name}}<img src="{% static "images/weblogo.png" %}" alt="weblogo">
+    <!过滤器default,若为false默认name>
+    <p>{{ views_name | default:"Hjj Django" }}</p>
+
+    <!列表展示>
+    <p>{{ views_list }}</p>
+    <p>{{ views_list.0 }}</p>
+
+    <!字典展示>
+    <p>{{ views_dict }}</p>
+    <p>{{ views_dict.name1 }}</p>
+
+    <!过滤器date>
+    <p> {{ now_time | date:"Y-m-d" }}</p>
+    <!过滤器safe, 字符串标记为安全不需要html转义>
+    <p> {{ url_str | safe }}</p>
+
+    <!if else操作>
+    {% if num > 90 and num <= 100 %}
+        优秀
+    {% elif num > 60 and num <= 90 %}
+        合格
+    {% else %}
+        不合格
+    {% endif %}
+
+    <!for操作>
+    {% for i in views_list %}
+        <li>{{ i }}</li>
+    {% endfor %}
+    {% for i,j in views_dict.items %}
+        <ul>{{ i }}---{{ j }}</ul>
+    {% endfor %}
+
+</body>
+</html>
