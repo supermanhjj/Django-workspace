@@ -1,18 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>typedea 博客系统</title>
-</head>
-<body>
-    <div>顶部分类:
-        {% for cate in navs %}
-        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
-        {% endfor %}
-    </div>
-    <hr/>
-    <!--<h1>list</h1>-->
-    <!--{{ name }}-->
+{% extends "./base.html" %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>typedea 博客系统</title>-->
+<!--</head>-->
+<!--<body>-->
+    <!--&lt;!&ndash;<div>顶部分类:&ndash;&gt;-->
+        <!--&lt;!&ndash;{% for cate in navs %}&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="/category/{{ cate.id }}/">{{ cate.name }}</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<hr/>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<h1>list</h1>&ndash;&gt;-->
+    <!--&lt;!&ndash;{{ name }}&ndash;&gt;-->
+    <!--{% if tag %}-->
+    <!--标签页: {{ tag.name }}-->
+    <!--{% endif %}-->
+
+    <!--{% if category %}-->
+    <!--分类页: {{ category.name }}-->
+    <!--{% endif %}-->
+
+    <!--<ul>-->
+        <!--{% for post in post_list %}-->
+        <!--<li>-->
+            <!--<a href="/post/{{ post.id }}.html">{{ post.title }}</a>-->
+            <!--<div>-->
+                <!--<span>作者:{{ post.owner.username }}</span>-->
+                <!--<span>分类:{{ post.category.name }}</span>-->
+            <!--</div>-->
+            <!--<p>{{ post.desc }}</p>-->
+        <!--</li>-->
+        <!--{% endfor %}-->
+    <!--</ul>-->
+
+    <!--&lt;!&ndash;<hr/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div>底部分类:&ndash;&gt;-->
+        <!--&lt;!&ndash;{% for cate in navs %}&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="/category/{{ cate.id }}/">{{ cate.name }}</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<div>侧边栏展示:&ndash;&gt;-->
+        <!--&lt;!&ndash;{% for sidebar in sidebars %}&ndash;&gt;-->
+        <!--&lt;!&ndash;<h4>{{ sidebar.title }}</h4>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;{{ sidebar.content }}&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;{{ sidebar.content_html }}&ndash;&gt;-->
+        <!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+
+{% block title %}
     {% if tag %}
     标签页: {{ tag.name }}
     {% endif %}
@@ -20,11 +61,14 @@
     {% if category %}
     分类页: {{ category.name }}
     {% endif %}
+{% endblock %}
 
+{% block main %}
     <ul>
         {% for post in post_list %}
         <li>
-            <a href="/post/{{ post.id }}.html">{{ post.title }}</a>
+            <!--<a href="/post/{{ post.id }}.html">{{ post.title }}</a>-->
+            <a href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
             <div>
                 <span>作者:{{ post.owner.username }}</span>
                 <span>分类:{{ post.category.name }}</span>
@@ -33,19 +77,4 @@
         </li>
         {% endfor %}
     </ul>
-
-    <hr/>
-    <div>底部分类:
-        {% for cate in navs %}
-        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
-        {% endfor %}
-    </div>
-
-    <div>侧边栏展示:
-        {% for sidebar in sidebars %}
-        <h4>{{ sidebar.title }}</h4>
-        {{ sidebar.content }}
-        {% endfor %}
-    </div>
-</body>
-</html>
+{% endblock %}
