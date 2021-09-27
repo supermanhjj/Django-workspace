@@ -18,11 +18,13 @@ from django.urls import path
 from django.conf.urls import url
 
 # from blog.views import post_list, post_detail
-from blog.views import IndexView, CategoryView, TagView, PostDetailView
+from blog.views import IndexView, CategoryView, TagView, PostDetailView, demo, demo_list
 from config.views import links
 from .custom_site import custom_site
 
 urlpatterns = [
+    url(r'demo/$', demo, name='demo'),
+    url(r'demo-list/$', demo_list, name='demo-list'),
     # path('admin/', admin.site.urls),
     # url(r'^$', post_list, name='index'),
     url(r'^$', IndexView.as_view(), name='index'),

@@ -41,9 +41,11 @@ class CategoryView(IndexView):
         return queryset.filter(category_id=category_id)
 
 class TagView(IndexView):
+    tag_id = None
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        tag_id = self.kwargs.get('tag_id')
+        tag_id=self.kwargs.get('tag_id')
         tag = get_object_or_404(Tag, pk=tag_id)
         context.update({
             'tag': tag,
@@ -61,6 +63,11 @@ class PostDetailView(CommonViewMixin, DetailView):
     template_name = 'blog/detail.html'
     context_object_name = 'post'
     pk_url_kwarg = 'post_id'
+
+def demo(request):
+    return render(request, 'static_page/bootstrap-demo.html')
+def demo_list(request):
+    return render(request, 'static_page/list.html')
 
 ##################### function view ######################
 # def post_list(request, category_id=None, tag_id=None):

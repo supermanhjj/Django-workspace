@@ -111,11 +111,11 @@ class PostAdmin(admin.ModelAdmin):
 
     # 自定义静态资源引入
     # 这里用到完整的资源地址
-    class Media:
-        css = {
-            'all': ("https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", ),
-        }
-        js = ('https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.js', )
+    # class Media:
+    #     css = {
+    #         'all': ("https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", ),
+    #     }
+    #     js = ('https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.js', )
 
     def operator(self, obj):
         return format_html(
