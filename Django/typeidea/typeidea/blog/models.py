@@ -4,6 +4,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+import mistune
+
 class Category(models.Model):
     STATUS_NORMAL = 1
     STATUS_DELETE = 0
@@ -121,3 +123,7 @@ class Post(models.Model):
     @classmethod
     def hot_posts(cls):
         return cls.objects.filter(status=cls.STATUS_NORMAL).order_by('-pv')
+
+    def save(self, *args, **kwargs):
+        self.content_html = mistune.markdown(self.content)
+        super().save(*args, **kwargs)
