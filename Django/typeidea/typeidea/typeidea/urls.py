@@ -26,6 +26,7 @@ from config.views import LinkListView
 from comment.views import CommentView
 from .custom_site import custom_site
 
+
 urlpatterns = [
     url(r'demo/$', demo, name='demo'),
     url(r'demo-list/$', demo_list, name='demo-list'),

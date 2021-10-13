@@ -3,6 +3,7 @@
 # Create your models here.
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.functional import cached_property
 
 import mistune
 
@@ -90,6 +91,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    @cached_property
+    def tags(self):
+        return ','.join(self.tag.values_list('name', flat=True))
 
     @staticmethod
     def get_by_tag(tag_id):
