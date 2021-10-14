@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'blog',
     'config',
     'comment',
+    'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -97,6 +98,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# drf 配置
+REST_FRAMEWORK = {
+    # AttributeError: 'AutoSchema' object has no attribute 'get_link'
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2,
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
